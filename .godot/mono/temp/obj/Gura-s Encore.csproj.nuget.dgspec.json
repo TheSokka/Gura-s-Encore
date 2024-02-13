@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/sokka/RiderProjects/Gura-s-Encore/Gura-s Encore.csproj": {}
+    "C:\\Users\\MileS\\RiderProjects\\Gura-s-Encore\\Gura-s Encore.csproj": {}
   },
   "projects": {
-    "/home/sokka/RiderProjects/Gura-s-Encore/Gura-s Encore.csproj": {
+    "C:\\Users\\MileS\\RiderProjects\\Gura-s-Encore\\Gura-s Encore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/sokka/RiderProjects/Gura-s-Encore/Gura-s Encore.csproj",
+        "projectUniqueName": "C:\\Users\\MileS\\RiderProjects\\Gura-s-Encore\\Gura-s Encore.csproj",
         "projectName": "Gura-s Encore",
-        "projectPath": "/home/sokka/RiderProjects/Gura-s-Encore/Gura-s Encore.csproj",
-        "packagesPath": "/home/sokka/.nuget/packages/",
-        "outputPath": "/home/sokka/RiderProjects/Gura-s-Encore/.godot/mono/temp/obj/",
+        "projectPath": "C:\\Users\\MileS\\RiderProjects\\Gura-s-Encore\\Gura-s Encore.csproj",
+        "packagesPath": "C:\\Users\\MileS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MileS\\RiderProjects\\Gura-s-Encore\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/sokka/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\MileS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,22 +64,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.23, 6.0.23]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.23, 6.0.23]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

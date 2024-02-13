@@ -1,18 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bibhw87m7ocm0"]
+[gd_scene load_steps=5 format=3 uid="uid://bibhw87m7ocm0"]
 
 [ext_resource type="Script" path="res://Prefabs/Player/gura.cs" id="1_rm2ix"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_3n6pi"]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sfch1"]
 height = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_3n6pi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x0xnq"]
+size = Vector3(0.2, 0.2, 0.2)
 
 [node name="gura" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_rm2ix")
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_3n6pi")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sfch1")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
+mesh = SubResource("BoxMesh_3n6pi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281316, 0.533814, 0)
+mesh = SubResource("BoxMesh_x0xnq")
+skeleton = NodePath("../..")
