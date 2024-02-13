@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bibhw87m7ocm0"]
+
+[ext_resource type="Script" path="res://Prefabs/Player/gura.cs" id="1_rm2ix"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3n6pi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sfch1"]
+height = 1.0
+
+[node name="gura" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_rm2ix")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3n6pi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sfch1")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://di7dvt0d6qny1"]
+
+[ext_resource type="Script" path="res://Prefabs/Camera/MainCamera.cs" id="1_2rrqu"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="2_f0d55"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_mtoec"]
+
+[node name="MainCamera" type="Node" groups=["Camera"]]
+script = ExtResource("1_2rrqu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25327, 5)
+script = ExtResource("2_f0d55")
+priority_override = false
+priority = 0
+follow_mode = 6
+follow_target = NodePath("../../gura")
+follow_parameters/spring_arm/spring_length = 5.0
+follow_parameters/spring_arm/collision_mask = 65
+follow_parameters/spring_arm/shape = null
+follow_parameters/spring_arm/margin = 0.01
+follow_parameters/target_offset = Vector3(0, 0, 0)
+follow_parameters/damping = true
+follow_parameters/damping_value = 10.0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("3_mtoec")
