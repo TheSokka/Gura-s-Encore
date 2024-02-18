@@ -3,7 +3,7 @@ using System;
 
 public partial class MainCamera : Node {
 	private Camera3D _camera3D;
-	private float _mouseSensitivity = .2f;
+	[Export]private float _mouseSensitivity = 1f;
 	private Vector3 _cameraRotationDegrees;
 
 	// Called when the node enters the scene tree for the first time.
@@ -21,7 +21,7 @@ public partial class MainCamera : Node {
 			GD.Print(_cameraRotationDegrees);
 			_cameraRotationDegrees.X += Mathf.DegToRad(-mouseInput.Relative.Y * _mouseSensitivity);
 			_cameraRotationDegrees.Y += Mathf.DegToRad(mouseInput.Relative.X * _mouseSensitivity);
-			_cameraRotationDegrees.X = Mathf.Clamp(_cameraRotationDegrees.X, -1.11f, 1.11f);
+			_cameraRotationDegrees.X = Mathf.Clamp(_cameraRotationDegrees.X, -75f, 75f);
 
 			_camera3D.Call("set_third_person_rotation_degrees", _cameraRotationDegrees);
 
