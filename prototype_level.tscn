@@ -29,12 +29,18 @@ transform = Transform3D(0.859273, -0.263015, 0.438718, -0.511518, -0.441825, 0.7
 
 [node name="gura" parent="." instance=ExtResource("2_okmep")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+_walkSpeed = 6.0
+_jumpVelocity = 5.0
+angularVelocity = 10.0
+_groundDeceleration = 15.0
+_acceleration = 15.0
 
 [node name="Control Manager" type="Node" parent="."]
 script = ExtResource("2_y4tpr")
 
 [node name="MainCamera" type="Node" parent="." groups=["Camera"]]
 script = ExtResource("3_k4sln")
+_mouseSensitivity = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="MainCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
