@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bibhw87m7ocm0"]
+[gd_scene load_steps=7 format=3 uid="uid://bibhw87m7ocm0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/gura.cs" id="1_rm2ix"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/StateMachine.cs" id="2_udod5"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/PGrounded.cs" id="3_kfc24"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sfch1"]
 height = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_3n6pi"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_updq5"]
 
 [node name="gura" type="CharacterBody3D" groups=["Player"]]
 floor_constant_speed = true
@@ -26,6 +30,7 @@ text = "XYZ"
 font_size = 142
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_sfch1")
 
 [node name="Visual" type="Node3D" parent="."]
@@ -40,3 +45,26 @@ skeleton = NodePath("../../..")
 [node name="Rays" type="Node3D" parent="."]
 
 [node name="GroundRayCast" type="RayCast3D" parent="Rays"]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_animTree", "_player")]
+script = ExtResource("2_udod5")
+_animTree = NodePath("")
+_player = NodePath("..")
+
+[node name="Grounded" type="Node" parent="StateMachine"]
+script = ExtResource("3_kfc24")
+
+[node name="Idle" type="Node" parent="StateMachine/Grounded"]
+
+[node name="Walk" type="Node" parent="StateMachine/Grounded"]
+
+[node name="Run" type="Node" parent="StateMachine/Grounded"]
+
+[node name="Attack" type="Node" parent="StateMachine/Grounded"]
+
+[node name="Node" type="Node" parent="StateMachine"]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_updq5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

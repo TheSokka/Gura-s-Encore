@@ -97,6 +97,10 @@ public partial class gura : CharacterBody3D {
     }
 
     public override void _Input(InputEvent @event) {
-        if (@event is InputEventMouseMotion mouseInput) { }
+        if (@event is InputEventMouseMotion mouseInput) {
+            
+            //Throw Attack
+            
+        }
     }
 }
