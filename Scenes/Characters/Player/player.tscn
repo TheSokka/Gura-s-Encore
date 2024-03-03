@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bibhw87m7ocm0"]
+[gd_scene load_steps=11 format=3 uid="uid://bibhw87m7ocm0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/gura.cs" id="1_rm2ix"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/StateMachine.cs" id="2_udod5"]
-[ext_resource type="Script" path="res://Scenes/Characters/Player/PGrounded.cs" id="3_kfc24"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/StateMachine/States/Grounded/PGrounded.cs" id="3_dsy7a"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/StateMachine/States/SIdle.cs" id="4_j1ba2"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/StateMachine/States/SWalk.cs" id="5_d74it"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/StateMachine/States/SAttack.cs" id="7_65gco"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/StateMachine/States/SRun.cs" id="7_gtutd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sfch1"]
 height = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_3n6pi"]
+size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_updq5"]
 
@@ -22,12 +27,20 @@ _groundDeceleration = 15.0
 _angularVelocity = 10.0
 metadata/_edit_group_ = true
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07777, 0)
-visible = false
-modulate = Color(0.278431, 0.670588, 1, 1)
+[node name="State" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
 text = "XYZ"
-font_size = 142
+font_size = 100
+uppercase = true
+
+[node name="SubState" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95861, 0)
+billboard = 1
+modulate = Color(0.67451, 0.67451, 0.67451, 1)
+text = "XYZ"
+font_size = 75
+uppercase = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -46,23 +59,27 @@ skeleton = NodePath("../../..")
 
 [node name="GroundRayCast" type="RayCast3D" parent="Rays"]
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_animTree", "_player")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_currentState", "_animTree", "_player")]
 script = ExtResource("2_udod5")
-_animTree = NodePath("")
+_currentState = NodePath("Grounded")
+_animTree = NodePath("../AnimationTree")
 _player = NodePath("..")
 
-[node name="Grounded" type="Node" parent="StateMachine"]
-script = ExtResource("3_kfc24")
+[node name="Grounded" type="Node" parent="StateMachine" node_paths=PackedStringArray("currentSubState")]
+script = ExtResource("3_dsy7a")
+currentSubState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine/Grounded"]
+script = ExtResource("4_j1ba2")
 
 [node name="Walk" type="Node" parent="StateMachine/Grounded"]
+script = ExtResource("5_d74it")
 
 [node name="Run" type="Node" parent="StateMachine/Grounded"]
+script = ExtResource("7_gtutd")
 
 [node name="Attack" type="Node" parent="StateMachine/Grounded"]
-
-[node name="Node" type="Node" parent="StateMachine"]
+script = ExtResource("7_65gco")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_updq5")
